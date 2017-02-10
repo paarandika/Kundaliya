@@ -1,5 +1,5 @@
 import argparse
-from creator import Params
+from params import Params
 
 
 def main():
