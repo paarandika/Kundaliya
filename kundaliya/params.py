@@ -1,24 +1,28 @@
 import logging
 import yaml
 
-logger=logging.getLogger(__name__)
+logger = logging.getLogger(__name__)
+
 
 class Params:
+    """ Object containing build parameters to be used in the build process.
+     Parameters are captured from setting.yaml file.
+    """
+
     def __init__(self, path=None):
         logging.basicConfig(level=logging.WARNING)
         logger.info("Acquiring settings")
-        settings=None
-        if path==None:
-            path="settings.yaml"
+        settings = None
+        if path == None:
+            path = "settings.yaml"
 
         try:
             with open(path, 'r') as f:
                 doc = yaml.load(f)
-                # print doc
+                self.__dict__.update(doc)
         except IOError:
             logger.error("No settings.yaml found")
         except yaml.YAMLError:
             logger.error("YAML error")
-        except:
-            logger.error("Unknown Error")
-
+        except RuntimeError as e:
+            logger.error("Unknown Error", e)
