@@ -1,5 +1,6 @@
 import logging
 import yaml
+import os
 
 logger = logging.getLogger(__name__)
 
@@ -15,6 +16,9 @@ class Params:
         settings = None
         if path == None:
             path = "settings.yaml"
+            self.cwd=os.getcwd()
+        else:
+            self.cwd=os.path.dirname(path)
 
         try:
             with open(path, 'r') as f:

@@ -1,5 +1,6 @@
 import argparse
 from params import Params
+from builder import Builder
 
 
 def main():
@@ -15,6 +16,8 @@ def main():
 
     if subparser_name=='build':
         settings=Params(args.pop('path'))
+        builder=Builder(settings)
+        builder.execute()
 
 
 if __name__ == '__main__':
