@@ -1,0 +1,20 @@
+version: 0.1
+name: "Abhaya"
+
+#merge two or more source file to single UFO
+merge:
+  #set of merge jobs
+  jobs:
+    - sources:
+      - a.ufo
+      - b.ufo
+      out: c.ufo
+      #by default all the metadata from first source is copied to output. Anythings that differs can be stated in this file
+      output info file: "merged"
+      #features will not be merged and feature file which is to be added to output should be stated here
+      output feature file: "merged"
+
+    - sources:
+      - d.ufo
+      - be.ufo
+      out: f.ufo
